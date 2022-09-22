@@ -1,4 +1,4 @@
-package core;
+package core.moblie;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
+
 
 public class AppiumBase {
 

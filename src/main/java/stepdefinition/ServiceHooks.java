@@ -1,6 +1,6 @@
 package stepdefinition;
 
-import core.AppiumBase;
+import core.moblie.AppiumBase;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -11,7 +11,7 @@ public class ServiceHooks {
     AppiumBase appiumBase = new AppiumBase();
     @Before
     public void initTest() throws MalformedURLException {
-        appiumBase.createDriver();
+//        appiumBase.createDriver();
     }
 
     @After
@@ -20,6 +20,6 @@ public class ServiceHooks {
             scenario.attach(((TakesScreenshot)AppiumBase.driver).getScreenshotAs(OutputType.BYTES),
                     "image/png", "imageDemo");
         }
-        appiumBase.tearDown();
+//        appiumBase.tearDown();
     }
 }

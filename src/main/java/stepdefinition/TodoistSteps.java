@@ -47,4 +47,5 @@ public class TodoistSteps {
     public void verifyNewTaskCompleted(String expectedMessage){
         Assert.assertTrue(homePage.verifyCompleteSucceeded(expectedMessage));
     }
+
 }
