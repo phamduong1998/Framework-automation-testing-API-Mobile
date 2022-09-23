@@ -58,7 +58,7 @@ public class ApiTodoistSteps {
     }
 
     @And("I delete project")
-    public void deleteProẹct(){
+    public void deleteProject(){
         projectTodoistService.deleteProject(prjID,token);
     }
 

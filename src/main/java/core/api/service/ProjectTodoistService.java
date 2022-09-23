@@ -70,7 +70,7 @@ public class ProjectTodoistService extends BaseRestApiService {
         RequestSpecification spec =
                 this.getDefaultRequestBuilder(String.format("%s/%s",TodoiesConstant.PROJECTS_PATH,id))
                 .headers("Authorization","Bearer "+token);
-        return this.dispatchServiceRequest(spec, Method.POST);
+        return this.dispatchServiceRequest(spec, Method.DELETE);
     }
 
 
