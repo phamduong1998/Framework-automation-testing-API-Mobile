@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
         features = "src/main/resources/features/todoist.feature",
         glue = "stepdefinition",
         plugin = {"pretty", "json:target/cucumber.json"},
-        tags = "@API"
+        tags = "@TEST"
 
 )
 public class RunCukeTest {
