@@ -28,17 +28,17 @@ public class TodoistSteps {
 
     }
 
-    @And("I create project todoies with name {string}")
+    @And("I create project todoies with name {string} in App")
     public void createProjectTodoies(String nameProject){
         menuPage.createProject(nameProject);
     }
 
-    @And("I create new task with message {string}")
+    @And("I create new task with message {string} in App")
     public void createTask(String message){
         homePage.createNewTask(message);
     }
 
-    @And("I complete new task")
+    @And("I complete new task in App")
     public void completeNewTask() {
         homePage.completeTaskCreated();
     }

@@ -22,14 +22,12 @@ public class ApiTodoistSteps {
     String token ;
     String prjID;
     String idTask;
-    public static final String TOKEN = "TOKEN";
 
 
     @Given("I login with api todoist")
     public void loginTotoist(){
         LoginResponse loginResponse = todiistService.loginResponse(createLoginRequestDTO());
         token = loginResponse.getToken();
-        System.out.println(TOKEN+"DDương");
     }
 
     @Given("I get projects todoist")
@@ -44,7 +42,7 @@ public class ApiTodoistSteps {
         Assert.assertEquals(detailTask.getContent(),content);
     }
 
-   @And("I create new project with name {string}")
+   @And("I create new project with {string} API")
     public void createNewProject(String namePrj){
         CreateNewProjectRequest createNewProjectRequest = new CreateNewProjectRequest();
         createNewProjectRequest.setName(namePrj);
@@ -55,7 +53,6 @@ public class ApiTodoistSteps {
     @And("I add new task with content {string}")
     public void addNewTask(String content){
         AddNewTaskRequest addNewTaskRequest = new AddNewTaskRequest();
-        addNewTaskRequest.setContent("content");
         addNewTaskRequest.setProjectId(prjID);
         AddNewTaskResponse addNewTaskResponse = projectTodoistService.addNewTaskResponse(addNewTaskRequest,content);
         idTask = addNewTaskResponse.getId();
@@ -78,12 +75,12 @@ public class ApiTodoistSteps {
         return loginRequestDTO;
     }
 
-    @And("I get id task created with {string}")
+    @And("I get id task created with {string} API")
     public void getIdTask(String content){
         getIDTask(content);
     }
 
-    @And("I reopen task with {string}")
+    @And("I reopen task with {string} API")
     public void reopenTask(String content ){
         projectTodoistService.reopenTask(getIDTask(content),token);
     }
