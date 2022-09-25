@@ -74,6 +74,7 @@ public class HomePage extends AppiumBase {
     }
 
     public boolean verifyProjectCreated(String namePrj){
+        clickButtonMenu();
         return getElementFromList(menuList,namePrj).getText().equals(namePrj);
     }
 
