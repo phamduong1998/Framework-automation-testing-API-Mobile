@@ -45,4 +45,7 @@ public class GetProjectResponse {
 
     @JsonProperty("parent_id")
     private Object parentId;
+
+    @JsonProperty("content")
+    private String content;
 }

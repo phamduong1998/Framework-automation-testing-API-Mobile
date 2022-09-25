@@ -8,6 +8,7 @@ import core.api.dto.request.todoistrequest.CreateNewProjectRequest;
 import core.api.dto.response.AddNewTaskResponse;
 import core.api.dto.response.CreateNewProjectResponse;
 import core.api.dto.response.GetProjectResponse;
+import core.api.dto.response.ListTasksActiveResponse;
 import io.cucumber.core.internal.com.fasterxml.jackson.core.type.TypeReference;
 import io.restassured.http.ContentType;
 import io.restassured.http.Method;
@@ -23,9 +24,31 @@ public class ProjectTodoistService extends BaseRestApiService {
         this.setHost(TodoiesConstant.DOMAIN_PROJECT_TODOIST);
     }
 
+    public List<ListTasksActiveResponse> listTasksActiveResponse(String token) {
+        RequestSpecification spec =
+                this.getDefaultRequestBuilder(TodoiesConstant.PROJECTS_ALL_TASK)
+                        .contentType(ContentType.JSON)
+                        .headers("Authorization","Bearer "+token);
+        Response response = this.dispatchServiceRequest(spec, Method.GET);
+        System.out.println(response.body().asString());
+        return ObjectMapperUtils.convertResponseToGenericDTOObject(
+                response.body().asString(), new TypeReference<>() {});
+    }
+
     public List<GetProjectResponse> getProjectResponse(String token) {
         RequestSpecification spec =
                 this.getDefaultRequestBuilder(TodoiesConstant.PROJECTS_PATH)
+                        .contentType(ContentType.JSON)
+                        .headers("Authorization","Bearer "+token);
+        Response response = this.dispatchServiceRequest(spec, Method.GET);
+        System.out.println(response.body().asString());
+        return ObjectMapperUtils.convertResponseToGenericDTOObject(
+                response.body().asString(), new TypeReference<>() {});
+    }
+
+    public List<GetProjectResponse> getListTask(String token) {
+        RequestSpecification spec =
+                this.getDefaultRequestBuilder(TodoiesConstant.PROJECTS_ALL_TASK)
                         .contentType(ContentType.JSON)
                         .headers("Authorization","Bearer "+token);
         Response response = this.dispatchServiceRequest(spec, Method.GET);
@@ -71,6 +94,13 @@ public class ProjectTodoistService extends BaseRestApiService {
                 this.getDefaultRequestBuilder(String.format("%s/%s",TodoiesConstant.PROJECTS_PATH,id))
                 .headers("Authorization","Bearer "+token);
         return this.dispatchServiceRequest(spec, Method.DELETE);
+    }
+
+    public Response reopenTask(String id, String token){
+        RequestSpecification spec =
+                this.getDefaultRequestBuilder(String.format("%s/%s/%s",TodoiesConstant.PROJECTS_ALL_TASK,id,"reopen"))
+                        .headers("Authorization","Bearer "+token);
+        return this.dispatchServiceRequest(spec, Method.POST);
     }
 
 

@@ -8,10 +8,11 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import java.net.MalformedURLException;
 public class ServiceHooks {
+    ApiTodoistSteps apiTodoistSteps = new ApiTodoistSteps();
     AppiumBase appiumBase = new AppiumBase();
     @Before
     public void initTest() throws MalformedURLException {
-//        appiumBase.createDriver();
+        appiumBase.createDriver();
     }
 
     @After
@@ -20,6 +21,7 @@ public class ServiceHooks {
             scenario.attach(((TakesScreenshot)AppiumBase.driver).getScreenshotAs(OutputType.BYTES),
                     "image/png", "imageDemo");
         }
-//        appiumBase.tearDown();
+        appiumBase.tearDown();
+        apiTodoistSteps.deleteProject();
     }
 }

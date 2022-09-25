@@ -10,6 +10,7 @@ public class TodoiesConstant {
 
     public static final String DOMAIN_PROJECT_TODOIST = "api.todoist.com";
     public static final String PROJECTS_PATH = "/rest/v2/projects";
+    public static final String PROJECTS_ALL_TASK = "/rest/v2/tasks/";
 
 
     private TodoiesConstant() {
