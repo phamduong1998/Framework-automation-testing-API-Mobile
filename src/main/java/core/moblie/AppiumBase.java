@@ -36,16 +36,16 @@ public class AppiumBase {
 
 
     public void selectToElement(MobileElement element) {
-        wait.until(ExpectedConditions.visibilityOf(element));
+//        wait.until(ExpectedConditions.visibilityOf(element));
         element.click();
     }
 
     public void senkeysToElement(MobileElement element, String value){
-        wait.until(ExpectedConditions.visibilityOf(element));
+//        wait.until(ExpectedConditions.visibilityOf(element));
         element.sendKeys(value);
     }
     public boolean verifyElementDisplay(MobileElement element){
-        wait.until(ExpectedConditions.visibilityOf(element));
+//        wait.until(ExpectedConditions.visibilityOf(element));
         return element.isDisplayed();
     }
 

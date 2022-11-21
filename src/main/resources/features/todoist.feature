@@ -1,7 +1,7 @@
 Feature: Feature app todoist
 
 
-    @Test
+  @Test
   Scenario Outline: Test “Create Project”
     Given I login with api todoist
     When I create new project with "<prjNmae>" API
@@ -39,5 +39,10 @@ Feature: Feature app todoist
     Then I should see task reopen successful with name "<content>"
     Examples:
       |prjNmae|content|
-      |sotatek|test   |
+      |Test|test   |
+
+    @Demo
+    Scenario:
+      And I login with api todoist
+      When I create project todoies with name "abc" in App
 

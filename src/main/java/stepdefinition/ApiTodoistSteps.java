@@ -1,6 +1,7 @@
 package stepdefinition;
 
 import config.TodoiesConstant;
+import core.BaseSteps;
 import core.api.dto.request.todoistrequest.AddNewTaskRequest;
 import core.api.dto.request.todoistrequest.CreateNewProjectRequest;
 import core.api.dto.request.todoistrequest.LoginRequestDTO;
@@ -11,13 +12,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.testng.Assert;
+import settings.ScenarioContext;
 
 
 import java.util.List;
 
-public class ApiTodoistSteps {
+public class ApiTodoistSteps extends BaseSteps {
 
-    LoginTodiistService todiistService = new LoginTodiistService();
+//    LoginTodiistService loginTodiistService = new LoginTodiistService();
     ProjectTodoistService projectTodoistService = new ProjectTodoistService();
     String token ;
     String prjID;
@@ -26,7 +28,7 @@ public class ApiTodoistSteps {
 
     @Given("I login with api todoist")
     public void loginTotoist(){
-        LoginResponse loginResponse = todiistService.loginResponse(createLoginRequestDTO());
+        LoginResponse loginResponse = loginTodiistService.loginResponse(createLoginRequestDTO());
         token = loginResponse.getToken();
     }
 

@@ -12,6 +12,10 @@ public class ScenarioContext {
         scenarioContext = new HashMap<>();
     }
 
+    public static ScenarioContext getInstance() {
+        return InstanceHolder.INSTANCE;
+    }
+
 
     public void setContext(String key, Object value) {
         scenarioContext.put(key, value);
@@ -23,6 +27,10 @@ public class ScenarioContext {
 
     public Boolean isContains(String key) {
         return scenarioContext.containsKey(key);
+    }
+
+    private static class InstanceHolder {
+        private static final ScenarioContext INSTANCE = new ScenarioContext();
     }
 
 }
